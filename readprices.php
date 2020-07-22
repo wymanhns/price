@@ -54,7 +54,7 @@ echo "*************************************************************************<
 
 */
 
-/*
+
 $pagecount=15;
 $pages=$total/$pagecount;
 $lastpagecount=$total%$pagecount;
@@ -76,8 +76,8 @@ for ($i=1; $i<=$pages; $i++)
         $result2=strstr($result1,'</li>',1);
         $resultx=strstr($result1,'</li>');
         #$result4=strstr($result3,'li id="footer-wechat"',1);
-        echo $result2;
-        $writeresult=$writeresult ;
+        #echo $result2;
+        $writeresult=$writeresult . "<br>" . $result2;
 
         if (preg_match("/intel/i", $result2)) {
             echo "Intel";
@@ -99,12 +99,12 @@ for ($i=1; $i<=$pages; $i++)
     
 
 }
-*/
+
 
 echo "99999";
 $myfile = fopen("newfile.html", "w") or die("Unable to open file!");
+$txt = $writeresult;
 #$txt = $result2;
-$txt = $result2;
 fwrite($myfile, $txt);
 
 fclose($myfile);
