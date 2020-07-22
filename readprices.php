@@ -62,6 +62,7 @@ if ($lastpagecount==0){ $lastpagecount=$pagecount; }
 
 echo "總數 ".$pages." 頁,尾頁 " .$lastpagecount." 個";
 $resultx=$response;
+$writeresult;
 for ($i=1; $i<=$pages; $i++)
 {
     $url1=$url."&page=".$i;
