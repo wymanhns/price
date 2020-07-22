@@ -26,3 +26,14 @@ jobs:
       run: composer -V
     - name: Check PHP Extensions
       run: php readprices.php
+    - name: commit
+      run: |
+        git config --global user.email wymanhns@gmail.com
+        git config --global user.name wymanhns
+        git add .
+        git commit -m "first commit" 
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
