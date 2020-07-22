@@ -25,4 +25,4 @@ jobs:
     - name: Check Composer Version
       run: composer -V
     - name: Check PHP Extensions
-      run: php -m
+      run: php readprices.php
