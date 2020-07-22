@@ -25,7 +25,10 @@ jobs:
     - name: Check Composer Version
       run: composer -V
     - name: Check PHP Extensions
-      run: php readprices.php
+      run: |
+        php readprices.php
+        echo `date` > LasterRunTime.log
+       
     - name: commit
       run: |
         git config --global user.email wymanhns@gmail.com
