@@ -1,7 +1,7 @@
 <?php
 
-$url="https://www.price.com.hk/category.php?c=100027&sort=2";
-
+$url="https://www.price.com.hk/category.php?c=100014&sort=2";
+$cpu="10014";
 $response = getHTTPS($url);
 $result1=strstr($response,"共");
 $result2=strstr($result1,"種項目" ,1);
@@ -104,7 +104,7 @@ for ($i=1; $i<=$pages; $i++)
 
 echo "99999";
 $myfile = fopen("newfile.html", "w") or die("Unable to open file!");
-$txt = "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>"; . $writeresult;
+$txt = "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<br>" . $writeresult;
 #$txt = $result2;
 fwrite($myfile, $txt);
 
