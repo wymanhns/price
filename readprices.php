@@ -60,7 +60,7 @@ $pages=$total/$pagecount;
 $lastpagecount=$total%$pagecount;
 if ($lastpagecount==0){ $lastpagecount=$pagecount; }
 
-echo "總數 ".$pages." 頁,尾頁 " .$lastpagecount." 個";
+echo "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>";
 $resultx=$response;
 $writeresult;
 for ($i=1; $i<=$pages; $i++)
@@ -104,7 +104,7 @@ for ($i=1; $i<=$pages; $i++)
 
 echo "99999";
 $myfile = fopen("newfile.html", "w") or die("Unable to open file!");
-$txt = $writeresult;
+$txt = "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>"; . $writeresult;
 #$txt = $result2;
 fwrite($myfile, $txt);
 
