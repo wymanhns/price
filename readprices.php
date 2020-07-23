@@ -193,7 +193,7 @@ function ReadData($name) {
             
             
             
-            array_push($rData,array($cpuid,$brand,$cpuname,$cpufamily,"https://www.price.com.hk/" . $cpupic ,$cpusocket,$cpufrequency,$cpumtfrequency,$cpucache,$cpuminprice,$cpumaxprice,$cpunew,$hot));
+            array_push($rData,array($cpuid,$brand,$cpuname,$cpufamily,"https://www.price.com.hk/" . $cpupic ,$cpusocket,$cpucore,$cputhreads,$cpufrequency,$cpumtfrequency,$cpucache,$cpuminprice,$cpumaxprice,$cpunew,$hot));
             $resultx=strstr($result2,"比較報價");
             $result2=substr($resultx,17);
             #$result2=$resultx;
