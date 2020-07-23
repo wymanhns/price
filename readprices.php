@@ -150,7 +150,7 @@ function ReadData($name) {
             // cpusocket
                 $resulta=strstr($result2,'Socket:'); 
                 $resultb=strstr($resulta,'</span></td>',1);
-                $cpusocket=substr($resultb,63);
+                $cpusocket=substr($resultb,64);
             //
             // cpucache
                 $resulta=strstr($result2,'Cache:'); 
