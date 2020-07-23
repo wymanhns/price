@@ -57,7 +57,7 @@ function ReadData($name) {
 
 
     $myfile = fopen( $name.".html", "w") or die("Unable to open file!");
-    $txt = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . $writeresult;
+    $txt = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>". $writeresult;
     #$txt = $result2;
     fwrite($myfile, $txt);
 
