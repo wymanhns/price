@@ -88,7 +88,7 @@ for ($i=1; $i<=$pages; $i++)
 
 echo "99999";
 $myfile = fopen("newfile.html", "w") or die("Unable to open file!");
-$txt = "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>"; . $writeresult;
+$txt = "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>" . $writeresult;
 #$txt = $result2;
 fwrite($myfile, $txt);
 
