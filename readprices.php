@@ -38,7 +38,7 @@ for ($i=1; $i<=$pages; $i++)
         {
 
         #cho $result2;
-        $xyz= $z + (($x-1)*15);
+        $xyz= $y + (($x-1)*15);
 
         echo "******************************** " . $xyz . " / ". $total . "**********************************<br>";
 
@@ -151,7 +151,7 @@ for ($i=1; $i<=$pages; $i++)
 
 echo "99999";
 $myfile = fopen("newfile.html", "w") or die("Unable to open file!");
-$txt = "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<br>" . $writeresult;
+$txt = $writeresult . "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<br>" ;
 #$txt = $result2;
 fwrite($myfile, $txt);
 
