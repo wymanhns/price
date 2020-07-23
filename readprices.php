@@ -9,7 +9,7 @@ function ReadData($name) {
     switch ($name)
     {
     case "cpu":
-        $url="http://127.0.0.1/1.html"; //cpu
+        $url="https://www.price.com.hk/category.php?c=100014&sort=2"; //cpu
         break;
     case "ram":
         $url="https://www.price.com.hk/category.php?c=100027&sort=2"; //ram
@@ -36,7 +36,7 @@ function ReadData($name) {
     {
         $url1=$url."&page=".$i;
         // for test
-        $url1="http://127.0.0.1/1.html";
+        #$url1="http://127.0.0.1/1.html";
         //
         echo $url1. "<br>";
         $resultx = getHTTPS($url1);
