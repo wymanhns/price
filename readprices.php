@@ -29,7 +29,7 @@ function ReadCpu($url) {
     echo "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<br>";
     $resultx=$response;
     $writeresult;
-    $pages=1;////////////////////////
+    #$pages=1;////////////////////////
     for ($i=1; $i<=$pages; $i++)
     {
         $url1=$url."&page=".$i;
