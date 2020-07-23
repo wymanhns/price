@@ -2,7 +2,7 @@
 
 //  url  
 $cpuurl="https://www.price.com.hk/category.php?c=100014&sort=2";
-//$ramurl="https://www.price.com.hk/category.php?c=100027&gp=20&sort=2";
+$ramurl="https://www.price.com.hk/category.php?c=100027&gp=20&sort=2";
 
 /*   test url */
 //$cpuurl="http://127.0.0.1/w1/cpu.html?"; 
@@ -29,7 +29,7 @@ function ReadCpu($url) {
     echo "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<br>";
     $resultx=$response;
     $writeresult;
-    #$pages=1;////////////////////////
+    $pages=1;////////////////////////
     for ($i=1; $i<=$pages; $i++)
     {
         $url1=$url."&page=".$i;
@@ -119,7 +119,7 @@ function ReadCpu($url) {
                     $resulta=strstr($result2,'外頻:');
                     $resulta=strstr($resulta,'<span>'); 
                     $resultb=strstr($resulta,'Hz',1);
-                    $cpumtfrequency=substr($resultb,0);
+                    $cpumtfrequency=substr($resultb,6);
                     #echo strlen($cpumtfrequency);  
                 } else {
                     $cpufamily="";
@@ -157,21 +157,21 @@ function ReadCpu($url) {
                 $resulta=strstr($result2,'時脈'); 
                 $resulta=strstr($resulta,'<span>'); 
                 $resultb=strstr($resulta,'Hz',1);
-                $cpufrequency=substr($resultb,0);
+                $cpufrequency=substr($resultb,6);
                 #echo strlen($cpufrequency);
-                echo $cpufrequency . "///////////";  
+                #echo $cpufrequency . "///////////";  
             //
             // cpusocket
                 $resulta=strstr($result2,'Socket:'); 
                 $resulta=strstr($resulta,'<span>');
                 $resultb=strstr($resulta,'</span></td>',1);
-                $cpusocket=substr($resultb,0);
+                $cpusocket=substr($resultb,6);
             //
             // cpucache
                 $resulta=strstr($result2,'Cache:'); 
                 $resulta=strstr($resulta,'<span>');
                 $resultb=strstr($resulta,'</span></td>',1);
-                $cpucache=substr($resultb,0);
+                $cpucache=substr($resultb,6);
                 #echo strlen($cpucache);
             //
             // cpuminprice cpumaxprice    text-price-number    行貨
@@ -193,9 +193,9 @@ function ReadCpu($url) {
                 $cpunew=$xy;
             //
             #echo "Strlen : ". strlen($resultb) . "<br>*" .$resultb . "*<br>" ;
-            echo "CPUID:" . $cpuid . " CPU BRAND: " . $brand . " CPU NAME: " . $cpuname . " FAMILY: " . $cpufamily . " CORE: " .$cpucore. " THREADS: " .$cputhreads. " FREQUENCY: " . $cpufrequency."Hz MAX FREQUENCY: " .$cpumtfrequency . "Hz SOCKET: " .$cpusocket. " CACHE: " .$cpucache ."<br>";
-            echo "IMG: <img src='https://www.price.com.hk/" . $cpupic . "'/>" . "<br>";
-            echo " MINPRICE: " . $cpuminprice . " MAXPRICE: " . $cpumaxprice . "<br>";
+            echo "CPUID:" . $cpuid . " CPU BRAND: " . $brand . " CPU NAME: " . $cpuname . " FAMILY: " . $cpufamily . " CORE: " .$cpucore. " THREADS: " .$cputhreads. " FREQUENCY: " . $cpufrequency."Hz MAX FREQUENCY: " .$cpumtfrequency . "Hz SOCKET: " .$cpusocket. " CACHE: " .$cpucache ."  <br>";
+            echo "IMG: <img src='https://www.price.com.hk/" . $cpupic . "'/>" . "   <br>";
+            echo " MINPRICE: " . $cpuminprice . " MAXPRICE: " . $cpumaxprice . "   <br>";
             
             
             
