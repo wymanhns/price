@@ -85,7 +85,17 @@ function ReadData($name) {
                 $resultb=strstr($resulta,'"/></a>',1);
                 $cpupic=substr($resultb,1);
             //
-                
+            // hot         
+            $resulty=strstr($resulta,'<!-- product name -->',1);
+            $resultz=strstr($resulty,'hot_20'); 
+            $resulty=strstr($resultz,'人氣項目',1);
+            #print_r (strlen($resulty)); 
+            $hot=0;
+            if (strlen($resulty) > 0){
+                $hot=1;
+                echo "*** Hot! ***";
+            }
+            // 
             // cpu family cpucore cputhreads mtfrequency
             if ($brand == "Intel"){
                 $resulta=strstr($result2,'<!-- product name -->'); 
@@ -183,7 +193,7 @@ function ReadData($name) {
             
             
             
-            array_push($rData,array($cpuid,$brand,$cpuname,$cpufamily,"https://www.price.com.hk/" . $cpupic ,$cpusocket,$cpufrequency,$cpumtfrequency,$cpucache,$cpuminprice,$cpumaxprice,$cpunew));
+            array_push($rData,array($cpuid,$brand,$cpuname,$cpufamily,"https://www.price.com.hk/" . $cpupic ,$cpusocket,$cpufrequency,$cpumtfrequency,$cpucache,$cpuminprice,$cpumaxprice,$cpunew,$hot));
             $resultx=strstr($result2,"比較報價");
             $result2=substr($resultx,17);
             #$result2=$resultx;
