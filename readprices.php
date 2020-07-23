@@ -173,6 +173,9 @@ function ReadData($name) {
                 #echo "//".substr($resulta,31) ."//";
                 #echo strlen($cpumaxprice);  
             //
+            // cpunew
+                $cpunew=$xy;
+            //
             #echo "Strlen : ". strlen($resultb) . "<br>*" .$resultb . "*<br>" ;
             echo "CPUID:" . $cpuid . " CPU BRAND: " . $brand . " CPU NAME: " . $cpuname . " FAMILY: " . $cpufamily . " CORE: " .$cpucore. " THREADS: " .$cputhreads. " FREQUENCY: " . $cpufrequency."Hz MAX FREQUENCY: " .$cpumtfrequency . "Hz SOCKET: " .$cpusocket. " CACHE: " .$cpucache ."<br>";
             echo "IMG: <img src='https://www.price.com.hk/" . $cpupic . "'/>" . "<br>";
@@ -180,7 +183,7 @@ function ReadData($name) {
             
             
             
-            array_push($rData,array($cpuid,$brand,$cpuname,$cpufamily,"https://www.price.com.hk/" . $cpupic ,$cpusocket,$cpufrequency,$cpumtfrequency,$cpucache,$cpuminprice,$cpumaxprice));
+            array_push($rData,array($cpuid,$brand,$cpuname,$cpufamily,"https://www.price.com.hk/" . $cpupic ,$cpusocket,$cpufrequency,$cpumtfrequency,$cpucache,$cpuminprice,$cpumaxprice,$cpunew));
             $resultx=strstr($result2,"比較報價");
             $result2=substr($resultx,17);
             #$result2=$resultx;
