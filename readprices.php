@@ -1,98 +1,69 @@
 <?php
 
-$url="https://www.price.com.hk/category.php?c=100027&sort=2";
+#$url="https://www.price.com.hk/category.php?c=100027&sort=2"; //ram
+$url="https://www.price.com.hk/category.php?c=100014&sort=2"; //cpu
 
-$response = getHTTPS($url);
-$result1=strstr($response,"共");
-$result2=strstr($result1,"種項目" ,1);
-$total=substr($result2,3);
+ReadData("cpu");
 
-/*
-for ($i=1,$x=1; $i<=$total; $i++, $x++)
-{
-    if ( $x > "15"){ //轉頁
-        $x=1;
-    }
+function ReadData($name) {
 
-    echo "The number is " . $i . "  x = ".$x."<br>";
- 
-
-}
-*/
-#echo $response;
-echo $total;
-/*
-echo "*************************************************************************<br>";
-$result3=strstr($result1,"li id="); //</li>
-$result2=strstr($result3,'</li>',1);
-$result41=strstr($result3,'</li>');
-#$result4=strstr($result3,'li id="footer-wechat"',1);
-#echo $result2;
-echo "*************************************************************************<br>";
-
-// CPU **************************
-    // brand 
-    if (preg_match("/intel/i", $result2)) {
-        $brand="Intel";
-    } elseif (preg_match("/amd/i", $result2)) {
-        $brand="Amd";
-    } elseif (preg_match("/via/i", $result2)) {
-        $brand="VIA";
-    } else {
-        $brand="未发现匹配的。";
-    }
-    // cpuname
-    $resulta=strstr($result2,'data-add-compare-name="'); //</li>
-    $resultb=strstr($resulta,'" >添加比較',1);
-    $cpuname=substr($resultb,23);
-    #$resultc=strrpos($resultc," ");
-    echo $brand . " " . $resultc;
-    
-
-
-//
-
-*/
-
-
-$pagecount=15;
-$pages=$total/$pagecount;
-$lastpagecount=$total%$pagecount;
-if ($lastpagecount==0){ $lastpagecount=$pagecount; }
-
-echo "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>";
-$resultx=$response;
-$writeresult;
-for ($i=1; $i<=$pages; $i++)
-{
-    $url1=$url."&page=".$i;
-    echo $url1;
-    $resultx = getHTTPS($url1);
-
-    echo "******************************* Page ".$i." *************************************<br>";
-    for ($x=1; $x<=$pagecount; $x++)
+    switch ($name)
     {
-        
-        $result1=strstr($resultx,"li id="); //</li>
-        $result2=strstr($result1,'</li>',1);
-        $resultx=strstr($result1,'</li>');
-        #$result4=strstr($result3,'li id="footer-wechat"',1);
-        #echo $result2;
-        $writeresult=$writeresult . "<br>" . $result2;
-        
+    case "cpu":
+        $url="https://www.price.com.hk/category.php?c=100014&sort=2"; //cpu
+        break;
+    case "ram":
+        $url="https://www.price.com.hk/category.php?c=100027&sort=2"; //ram
+        break;
+    default:
+    $url="https://www.price.com.hk/category.php?c=100014&sort=2"; //cpu
     }
-    
+
+
+    $response = getHTTPS($url);
+    $result1=strstr($response,"共");
+    $result2=strstr($result1,"種項目" ,1);
+    $total=substr($result2,3);
+
+    $pagecount=15;
+    $pages=$total/$pagecount;
+    $lastpagecount=$total%$pagecount;
+    if ($lastpagecount==0){ $lastpagecount=$pagecount; }
+
+    echo "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>";
+    $resultx=$response;
+    $writeresult;
+    for ($i=1; $i<=$pages; $i++)
+    {
+        $url1=$url."&page=".$i;
+        echo $url1;
+        $resultx = getHTTPS($url1);
+
+        echo "******************************* Page ".$i." *************************************<br>";
+        for ($x=1; $x<=$pagecount; $x++)
+        {
+            
+            $result1=strstr($resultx,"li id="); //</li>
+            $result2=strstr($result1,'</li>',1);
+            $resultx=strstr($result1,'</li>');
+            #$result4=strstr($result3,'li id="footer-wechat"',1);
+            #echo $result2;
+            $writeresult=$writeresult . "<br>" . $result2;
+            
+        }
+        
+
+    }
+
+
+    $myfile = fopen( $name.".html", "w") or die("Unable to open file!");
+    $txt = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . $writeresult;
+    #$txt = $result2;
+    fwrite($myfile, $txt);
+
+    fclose($myfile);
 
 }
-
-
-echo "99999";
-$myfile = fopen("newfile.html", "w") or die("Unable to open file!");
-$txt = "總數 ".$total." 個頂目 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>" . $writeresult;
-#$txt = $result2;
-fwrite($myfile, $txt);
-
-fclose($myfile);
 
 
 
