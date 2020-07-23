@@ -1,22 +1,19 @@
 <?php
 
-$url="https://www.price.com.hk/category.php?c=100027&sort=2";
-$url="http://127.0.0.1/1.html";
-ReadData("cpu");
+ 
+$cpuurl="https://www.price.com.hk/category.php?c=100027&sort=2";
+$ramurl="https://www.price.com.hk/category.php?c=100027&gp=20&sort=2";
 
-function ReadData($name) {
+/*   test url 
+$cpuurl="http://127.0.0.1/w1/cpu.html?"; 
+$ramurl="http://127.0.0.1/w1/ram.html?"; 
+*/
 
-    switch ($name)
-    {
-    case "cpu":
-        $url="https://www.price.com.hk/category.php?c=100014&sort=2"; //cpu
-        break;
-    case "ram":
-        $url="https://www.price.com.hk/category.php?c=100027&sort=2"; //ram
-        break;
-    default:
-    $url="https://www.price.com.hk/category.php?c=100014&sort=2"; //cpu
-    }
+ReadCpu($cpuurl);
+
+
+
+function ReadCpu($url) {
 
     $rData=array();
     $response = getHTTPS($url);
@@ -35,9 +32,7 @@ function ReadData($name) {
     for ($i=1; $i<=$pages; $i++)
     {
         $url1=$url."&page=".$i;
-        // for test
-        #$url1="http://127.0.0.1/1.html";
-        //
+
         echo $url1. "<br>";
         $resultx = getHTTPS($url1);
 
@@ -117,7 +112,7 @@ function ReadData($name) {
                     $cputhreads=$threads[0][0];
                     $resulta=strstr($result2,'外頻:'); 
                     $resultb=strstr($resulta,'Hz',1);
-                    $cpumtfrequency=substr($resultb,64);
+                    $cpumtfrequency=substr($resultb,63);
                     #echo strlen($cpumtfrequency);  
                 } else {
                     $cpufamily="";
@@ -154,18 +149,18 @@ function ReadData($name) {
             // cpufrequency 
                 $resulta=strstr($result2,'時脈:'); 
                 $resultb=strstr($resulta,'Hz',1);
-                $cpufrequency=substr($resultb,64);
+                $cpufrequency=substr($resultb,63);
                 #echo strlen($cpufrequency);      
             //
             // cpusocket
                 $resulta=strstr($result2,'Socket:'); 
                 $resultb=strstr($resulta,'</span></td>',1);
-                $cpusocket=substr($resultb,64);
+                $cpusocket=substr($resultb,63);
             //
             // cpucache
                 $resulta=strstr($result2,'Cache:'); 
                 $resultb=strstr($resulta,'</span></td>',1);
-                $cpucache=substr($resultb,63);
+                $cpucache=substr($resultb,62);
                 #echo strlen($cpucache);
             //
             // cpuminprice cpumaxprice    text-price-number    行貨
@@ -202,7 +197,7 @@ function ReadData($name) {
 
         #echo $result2;
         $jsonx = json_encode($rData);
-        #print_r ($jsonx);
+        print_r ($jsonx);
         file_put_contents('cpu.json', $jsonx);
 
         $writeresult=$writeresult . "<br>" . $result2;
