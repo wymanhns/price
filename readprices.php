@@ -133,7 +133,7 @@ function ReadCpu($url) {
                     $resulty=strstr($resultb,'"product-caption">('); 
                     $resultz=strstr($resulty,')</span></div>',1);
                     $resultb=substr($resultz,19);
-                    $cpufamily=strstr($resultb,',',1);
+                    $cpufamily=0;
                     $resulty=strstr($resultz,'('); 
                     $resultz=stristr($resulty,'core',1);
                     $cpucore=substr($resultz,1);
@@ -211,19 +211,19 @@ function ReadCpu($url) {
         print_r ($jsonx);
         file_put_contents('cpu.json', $jsonx);
 
-        $writeresult=$writeresult . "<br>" . $result2;
+        $writeresult=$writeresult . "<br>" . $resultx;
 
         
 
     }
 
-    /*
-    $myfile = fopen( $name.".html", "w") or die("Unable to open file!");
+    
+    $myfile = fopen( "html".".html", "w") or die("Unable to open file!");
     $txt = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>". $writeresult;
     #$txt = $result2;
     fwrite($myfile, $txt);
     fclose($myfile);
-    */
+    
 
 }
 
