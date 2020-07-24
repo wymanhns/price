@@ -200,8 +200,8 @@ function ReadCpu($url) {
             
             
             array_push($rData,array($cpuid,$brand,$cpuname,$cpufamily,"https://www.price.com.hk/" . $cpupic ,$cpusocket,$cpucore,$cputhreads,$cpufrequency,$cpumtfrequency,$cpucache,$cpuminprice,$cpumaxprice,$cpunew,$hot));
-            $resultx=strstr($result2,"比較報價");
-            $result2=substr($resultx,17);
+            $result1=strstr($result2,"比較報價");
+            $result2=substr($result1,17);
             #$result2=$resultx;
             #echo $resultx;
         }
@@ -218,14 +218,15 @@ function ReadCpu($url) {
     }
 
     
-    $myfile = fopen( "html".".html", "w") or die("Unable to open file!");
+    $myfile = fopen( "cpu.html", "w") or die("Unable to open file!");
     $txt = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>". $writeresult;
     #$txt = $result2;
     fwrite($myfile, $txt);
     fclose($myfile);
     
 
-}
+}    
+
 
 
 
