@@ -36,7 +36,8 @@ function ReadCpu($url) {
 
         echo $url1. "<br>";
         $resultx = getHTTPS($url1);
-
+        $writeresult=$writeresult . "<br>" . $resultx;
+        
         echo "******************************* Page ".$i." *************************************<br>";
         $pagecount=15;
 
@@ -211,7 +212,7 @@ function ReadCpu($url) {
         print_r ($jsonx);
         file_put_contents('cpu.json', $jsonx);
 
-        $writeresult=$writeresult . "<br>" . $resultx;
+        
 
         
 
@@ -219,8 +220,8 @@ function ReadCpu($url) {
 
     
     $myfile = fopen( "cpu.html", "w") or die("Unable to open file!");
-    $txt = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<bar>". $writeresult;
-    #$txt = $result2;
+    #$txt = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "總數 ".$total." 個 , 共有 ".$pages." 頁,尾頁 " .$lastpagecount." 個<br>". $writeresult;
+    $txt = $writeresult;
     fwrite($myfile, $txt);
     fclose($myfile);
     
